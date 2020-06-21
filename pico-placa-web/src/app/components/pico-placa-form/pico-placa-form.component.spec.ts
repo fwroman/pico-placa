@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PicoPlacaFormComponent } from './pico-placa-form.component';
 import { By } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 describe('PicoPlacaFormComponent', () => {
   let component: PicoPlacaFormComponent;
@@ -9,7 +10,7 @@ describe('PicoPlacaFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PicoPlacaFormComponent]
+      declarations: [PicoPlacaFormComponent], imports: [FormsModule]
     })
       .compileComponents();
   }));
@@ -46,12 +47,40 @@ describe('PicoPlacaFormComponent', () => {
     expect(cardTag.querySelector('.card-header').textContent).toContain('Find out whether or not you have driving allowance in Quito Now');
   });
 
-  /*it(`DOM element with class .card should have tag with .card-header class with text inside of it`, () => {
+  it(`DOM element with class .card should have a child tag with class .row`, () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement;
-    const containerTag = compiled.query(By.css('.container')).nativeElement;
-    const col12Tag = compiled.query(By.css('.col-12')).nativeElement;
     const cardTag = compiled.query(By.css('.card')).nativeElement;
-    expect(containerTag.querySelector('.card-header')).toBeTruthy();
-  });*/
+    expect(cardTag.querySelector('.row')).toBeTruthy();
+  });
+
+  it(`should have @ViewChild NgForm attribute referenced from the DOM`, () => {
+    fixture.detectChanges();
+    const frm = fixture.componentInstance.form;
+    expect(frm).toBeDefined();
+  });
+
+  it(`should have picoPlaca attribute defined`, () => {
+    fixture.detectChanges();
+    expect(fixture.componentInstance.picoPlaca).toBeDefined();
+  });
+
+  it(`should have input element with id #plateNumber`, () => {
+    fixture.detectChanges();
+    let input = fixture.debugElement.query(By.css("input#plateNumber"));
+    expect(input).toBeTruthy();
+  });
+
+  it(`should have input element with id #date`, () => {
+    fixture.detectChanges();
+    let input = fixture.debugElement.query(By.css("input#date"));
+    expect(input).toBeTruthy();
+  });
+
+  it(`should have input element with id #time`, () => {
+    fixture.detectChanges();
+    let input = fixture.debugElement.query(By.css("input#time"));
+    expect(input).toBeTruthy();
+  });
+
 });
