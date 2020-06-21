@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
+import { PicoPlacaAlertComponent } from './components/pico-placa-alert/pico-placa-alert.component';
+import { ElementRef } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -72,5 +74,19 @@ describe('AppComponent', () => {
     const containerTag = compiled.query(By.css('.container')).nativeElement;
     const col12Tag = compiled.query(By.css('.col-12')).nativeElement;
     expect(containerTag.querySelector('pico-placa-form')).toBeTruthy();
+  });
+
+  it(`should have a @ViewChild attribute named 'infoAlert' defined`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const infoAlert = fixture.componentInstance.infoAlert;
+    expect(infoAlert).toBeDefined();
+  });
+
+  it(`@ViewChild attribute named 'infoAlert' must be a 'PicoPlacaAlertComponent' and it has to be represented by tag 'pico-placa-alert'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const infoAlert: ElementRef = fixture.componentInstance.infoAlert;
+    expect(infoAlert.nativeElement.tagName.toLowerCase()).toBe('pico-placa-alert');
   });
 });
