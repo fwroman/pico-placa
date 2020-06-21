@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pico-placa-alert',
+  selector: 'pico-placa-alert',
   templateUrl: './pico-placa-alert.component.html',
-  styleUrls: ['./pico-placa-alert.component.css']
+  styleUrls: ['./pico-placa-alert.component.scss']
 })
 export class PicoPlacaAlertComponent implements OnInit {
 
