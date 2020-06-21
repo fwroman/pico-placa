@@ -65,12 +65,12 @@ describe('AppComponent', () => {
     expect(containerTag.querySelector('.col-12')).toBeTruthy();
   });
 
-  it('DOM element with class .col-12 should have child component with tag pico-placa', () => {
+  it('DOM element with class .col-12 should have child component with tag pico-placa-form', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement;
     const containerTag = compiled.query(By.css('.container')).nativeElement;
     const col12Tag = compiled.query(By.css('.col-12')).nativeElement;
-    expect(containerTag.querySelector('pico-placa')).toBeTruthy();
+    expect(containerTag.querySelector('pico-placa-form')).toBeTruthy();
   });
 });
