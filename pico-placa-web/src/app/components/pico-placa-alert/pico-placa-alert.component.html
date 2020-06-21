@@ -1,1 +1,18 @@
-<p>pico-placa-alert works!</p>
+<div class="col-12">
+    <div class="alert" [ngClass]="{
+        'alert-info': alert.type == alertTypes.info,
+        'alert-success': alert.type == alertTypes.success,
+        'alert-danger': alert.type == alertTypes.danger
+    }">
+        <h6>
+            <span class="fa mr-1" [ngClass]="{
+                'fa-info-circle': alert.type == alertTypes.info,
+                'fa-check-circle': alert.type == alertTypes.success,
+                'fa-exclamation-circle': alert.type == alertTypes.danger
+            }"></span>
+            {{ alert.title }}
+        </h6>
+        <hr>
+        {{ alert.message }}
+    </div>
+</div>
