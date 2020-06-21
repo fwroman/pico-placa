@@ -4,10 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PicoPlacaComponent } from './components/pico-placa/pico-placa.component';
 
-//ROUTES
-import { routing, appRoutingProviders } from './app.routing';
-////
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,9 +11,8 @@ import { routing, appRoutingProviders } from './app.routing';
   ],
   imports: [
     BrowserModule,
-    routing
   ],
-  providers: [appRoutingProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
