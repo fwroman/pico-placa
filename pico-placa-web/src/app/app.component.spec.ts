@@ -96,4 +96,26 @@ describe('AppComponent', () => {
     expect(fixture.componentInstance.infoAlertObj.type).toBeGreaterThanOrEqual(1);
     expect(fixture.componentInstance.infoAlertObj.type).toBeLessThanOrEqual(3);
   });
+
+  it(`should have a @ViewChild attribute named 'responseAlert' defined`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const responseAlert = fixture.componentInstance.responseAlert;
+    expect(responseAlert).toBeDefined();
+  });
+
+  it(`@ViewChild attribute named 'responseAlert' must be a 'PicoPlacaAlertComponent' and it has to be represented by tag 'pico-placa-alert'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const responseAlert: ElementRef = fixture.componentInstance.responseAlert;
+    expect(responseAlert.nativeElement.tagName.toLowerCase()).toBe('pico-placa-alert');
+  });
+
+  it(`responseAlert attribute should has a title different than '', a message body different than '' and an alert type between [1,2,3] `, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    expect(fixture.componentInstance.respAlertObj.title.length).toBeGreaterThan(0);
+    expect(fixture.componentInstance.respAlertObj.message.length).toBeGreaterThan(0);
+    expect(fixture.componentInstance.respAlertObj.type).toBeGreaterThanOrEqual(1);
+    expect(fixture.componentInstance.respAlertObj.type).toBeLessThanOrEqual(3);
+  });
 });
