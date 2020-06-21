@@ -1,7 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
-import { PicoPlacaAlertComponent } from './components/pico-placa-alert/pico-placa-alert.component';
 import { ElementRef } from '@angular/core';
 
 describe('AppComponent', () => {
@@ -88,5 +87,13 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const infoAlert: ElementRef = fixture.componentInstance.infoAlert;
     expect(infoAlert.nativeElement.tagName.toLowerCase()).toBe('pico-placa-alert');
+  });
+
+  it(`infoAlertObj attribute should has a title different than '', a message body different than '' and an alert type between [1,2,3] `, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    expect(fixture.componentInstance.infoAlertObj.title.length).toBeGreaterThan(0);
+    expect(fixture.componentInstance.infoAlertObj.message.length).toBeGreaterThan(0);
+    expect(fixture.componentInstance.infoAlertObj.type).toBeGreaterThanOrEqual(1);
+    expect(fixture.componentInstance.infoAlertObj.type).toBeLessThanOrEqual(3);
   });
 });
