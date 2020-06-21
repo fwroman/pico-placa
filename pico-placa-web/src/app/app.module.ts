@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PicoPlacaFormComponent } from './components/pico-placa-form/pico-placa-form.component';
+import { PicoPlacaAlertComponent } from './components/pico-placa-alert/pico-placa-alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PicoPlacaFormComponent
+    PicoPlacaFormComponent,
+    PicoPlacaAlertComponent
   ],
   imports: [
     BrowserModule,
