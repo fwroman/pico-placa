@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-12" [ngClass]="{ 'd-none': alert.hidden }">
     <div class="alert" [ngClass]="{
         'alert-info': alert.type == alertTypes.info,
         'alert-success': alert.type == alertTypes.success,

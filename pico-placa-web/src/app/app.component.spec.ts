@@ -118,4 +118,9 @@ describe('AppComponent', () => {
     expect(fixture.componentInstance.respAlertObj.type).toBeGreaterThanOrEqual(1);
     expect(fixture.componentInstance.respAlertObj.type).toBeLessThanOrEqual(3);
   });
+
+  it(`attribute 'picoPlacaChildAttr' should be defined`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    expect(fixture.componentInstance.picoPlacaChildAttr).toBeDefined();
+  });
 });

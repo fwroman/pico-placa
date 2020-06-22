@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { PicoPlaca } from 'src/app/models/pico-placa';
 import { PicoPlacaService } from 'src/app/services/pico-placa.service';
+import { AfterPicoPlacaProcInterface } from 'src/app/interfaces/afert-pico-proc.iterface';
 
 @Component({
   selector: 'pico-placa-form',
@@ -11,7 +12,7 @@ import { PicoPlacaService } from 'src/app/services/pico-placa.service';
 })
 export class PicoPlacaFormComponent implements OnInit {
   @ViewChild('frmPicoPlaca') form: NgForm;
-  @Output() onPicoPlacaProcess: EventEmitter<boolean>;
+  @Output() onPicoPlacaProcess: EventEmitter<AfterPicoPlacaProcInterface>;
 
   public title: string;
   public picoPlaca: PicoPlaca;
@@ -24,7 +25,7 @@ export class PicoPlacaFormComponent implements OnInit {
     this.title = 'Find out whether or not you have driving allowance in Quito Now';
     this.picoPlaca = new PicoPlaca(null, null, null);
     this.submittedForm = false;
-    this.onPicoPlacaProcess = new EventEmitter<boolean>();
+    this.onPicoPlacaProcess = new EventEmitter<AfterPicoPlacaProcInterface>();
   }
 
   ngOnInit(): void {
@@ -59,7 +60,7 @@ export class PicoPlacaFormComponent implements OnInit {
     if (this.form.form.invalid) {
       return;
     }
-    let response = this._picoPlacaService.canCarBeDriven(this.picoPlaca);
-    this.onPicoPlacaProcess.emit(response);
+    let resp = this._picoPlacaService.canCarBeDriven(this.picoPlaca);
+    this.onPicoPlacaProcess.emit({ response: resp, picoPlaca: this.picoPlaca });
   }
 }
