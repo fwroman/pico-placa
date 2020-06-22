@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { PicoPlacaFormComponent } from './pico-placa-form.component';
 import { By } from '@angular/platform-browser';
@@ -83,4 +83,47 @@ describe('PicoPlacaFormComponent', () => {
     expect(input).toBeTruthy();
   });
 
+  it(`should have button element with id #submit`, () => {
+    fixture.detectChanges();
+    let btn = fixture.debugElement.query(By.css("button#submit"));
+    expect(btn).toBeTruthy();
+  });
+
+  it(`should have button with text: 'Ok'`, () => {
+    fixture.detectChanges();
+    let btn = fixture.debugElement.query(By.css("button#submit")).nativeElement;
+    expect(btn.textContent).toBe('Ok');
+  });
+
+  it(`should execute 'onSubmitProcess()' method on 'Ok' button click`, fakeAsync(() => {
+    spyOn(component, 'onSubmitProcess');
+    let btn = fixture.debugElement.query(By.css("button#submit")).nativeElement;
+    btn.click();
+    tick();
+    expect(component.onSubmitProcess).toHaveBeenCalled();
+  }));
+
+  it(`input element with id #plateNumber should be required`, () => {
+    let input = fixture.debugElement.query(By.css("input#plateNumber")).nativeElement;
+    expect(input.required).toBeTrue();
+  });
+
+  it(`input element with id #date should be required`, () => {
+    let input = fixture.debugElement.query(By.css("input#date")).nativeElement;
+    expect(input.required).toBeTrue();
+  });
+
+  it(`input element with id #time should be required`, () => {
+    let input = fixture.debugElement.query(By.css("input#time")).nativeElement;
+    expect(input.required).toBeTrue();
+  });
+
+  it(`should have 'submittedForm' attribute defined`, () => {
+    expect(fixture.componentInstance.submittedForm).toBeDefined();
+  });
+
+  it(`should have 'submittedForm' attribute equals 'true' on form submit`, () => {
+    fixture.componentInstance.onSubmitProcess();
+    expect(fixture.componentInstance.submittedForm).toBeTrue();
+  });
 });

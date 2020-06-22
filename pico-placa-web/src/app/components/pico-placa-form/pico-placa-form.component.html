@@ -1,20 +1,33 @@
 <div class="card">
     <h6 class="card-header">{{ title }}</h6>
-    <form #frmPicoPlaca="ngForm" class="row col-12 pt-2">
-        <div class="form-group col-md-4">
-            <label class="form-label">Plate Number:</label>
-            <input class="form-control" type="text" id="plateNumber" name="plateNum" #plateNum="ngModel"
-                [(ngModel)]="picoPlaca.plateNumber">
+    <form #frmPicoPlaca="ngForm" class="py-3 needs-validation" (ngSubmit)="onSubmitProcess()"
+        [ngClass]="{ 'was-validated': submittedForm }">
+        <div class="row col-12">
+            <div class="form-group col-md-4">
+                <label for="plateNumber">Plate Number:</label>
+                <input class="form-control" type="text" id="plateNumber" name="plateNum" #plateNum="ngModel"
+                    [(ngModel)]="picoPlaca.plateNumber" required>
+                <span class="invalid-feedback">This field is required.</span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="date">Date:</label>
+                <input class="form-control" type="text" id="date" name="date" #date="ngModel"
+                    [(ngModel)]="picoPlaca.date" required>
+                <span class="invalid-feedback">This field is required.</span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="time">Time:</label>
+                <input class="form-control" type="text" id="time" name="time" #time="ngModel"
+                    [(ngModel)]="picoPlaca.time" required>
+                <span class="invalid-feedback">This field is required.</span>
+            </div>
         </div>
 
-        <div class="form-group col-md-4">
-            <label class="form-label">Date:</label>
-            <input class="form-control" type="text" id="date" name="date" #date="ngModel" [(ngModel)]="picoPlaca.date">
-        </div>
-
-        <div class="form-group col-md-4">
-            <label class="form-label">Time:</label>
-            <input class="form-control" type="text" id="time" name="time" #time="ngModel" [(ngModel)]="picoPlaca.time">
+        <div class="col-12 d-flex flex-column align-items-center">
+            <hr class="w-100">
+            <button type="submit" class="btn btn-info" id="submit">Ok</button>
         </div>
     </form>
 </div>

@@ -11,13 +11,26 @@ export class PicoPlacaFormComponent implements OnInit {
   @ViewChild('frmPicoPlaca') form: NgForm;
   public title: string;
   public picoPlaca: PicoPlaca;
+  public submittedForm: boolean;
+  public isAllowedToDrive: boolean;
 
   constructor() {
     this.title = 'Find out whether or not you have driving allowance in Quito Now';
-    this.picoPlaca = new PicoPlaca('', '', '');
+    this.picoPlaca = new PicoPlaca(null, null, null);
+    this.submittedForm = false;
   }
 
   ngOnInit(): void {
   }
 
+  /**
+   * METHOD TO START THE 'PICO Y PLACA' PROCESS
+   * AUTHO: FREDI ROMAN
+   */
+  public onSubmitProcess() {
+    this.submittedForm = true;
+    if (this.form.form.invalid) {
+      return;
+    }
+  }
 }
