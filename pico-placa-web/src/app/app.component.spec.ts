@@ -82,14 +82,14 @@ describe('AppComponent', () => {
     expect(infoAlert).toBeDefined();
   });
 
-  it(`@ViewChild attribute named 'infoAlert' must be a 'PicoPlacaAlertComponent' and it has to be represented by tag 'pico-placa-alert'`, () => {
+  it(`@ViewChild attribute named 'infoAlert' must be a 'PicoPlacaAlertComponent' and it have to be represented by tag 'pico-placa-alert'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const infoAlert: ElementRef = fixture.componentInstance.infoAlert;
     expect(infoAlert.nativeElement.tagName.toLowerCase()).toBe('pico-placa-alert');
   });
 
-  it(`infoAlertObj attribute should has a title different than '', a message body different than '' and an alert type between [1,2,3] `, () => {
+  it(`infoAlertObj attribute should have a title different than '', a message body different than '' and an alert type between [1,2,3] `, () => {
     const fixture = TestBed.createComponent(AppComponent);
     expect(fixture.componentInstance.infoAlertObj.title.length).toBeGreaterThan(0);
     expect(fixture.componentInstance.infoAlertObj.message.length).toBeGreaterThan(0);
@@ -111,7 +111,7 @@ describe('AppComponent', () => {
     expect(responseAlert.nativeElement.tagName.toLowerCase()).toBe('pico-placa-alert');
   });
 
-  it(`responseAlert attribute should has a title different than '', a message body different than '' and an alert type between [1,2,3] `, () => {
+  it(`responseAlert attribute should have a title different than '', a message body different than '' and an alert type between [1,2,3] `, () => {
     const fixture = TestBed.createComponent(AppComponent);
     expect(fixture.componentInstance.respAlertObj.title.length).toBeGreaterThan(0);
     expect(fixture.componentInstance.respAlertObj.message.length).toBeGreaterThan(0);

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PicoPlacaAlertComponent } from './components/pico-placa-alert/pico-placa-alert.component';
 import { Alert } from './models/alert';
-import { ALERT_TYPES } from './components/constants/alert.types';
+import { ALERT_TYPES } from './constants/alert.types';
 
 @Component({
   selector: 'app-root',

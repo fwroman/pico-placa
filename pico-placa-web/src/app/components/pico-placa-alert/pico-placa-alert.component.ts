@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Alert } from 'src/app/models/alert';
-import { ALERT_TYPES } from '../constants/alert.types';
+import { ALERT_TYPES } from '../../constants/alert.types';
 
 @Component({
   selector: 'pico-placa-alert',
