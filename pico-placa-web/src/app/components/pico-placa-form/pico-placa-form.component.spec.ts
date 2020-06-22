@@ -126,4 +126,19 @@ describe('PicoPlacaFormComponent', () => {
     fixture.componentInstance.onSubmitProcess();
     expect(fixture.componentInstance.submittedForm).toBeTrue();
   });
+
+  it(`input element with id #plateNumber should have a validation pattern`, () => {
+    let input = fixture.debugElement.query(By.css("input#plateNumber")).nativeElement;
+    expect(input.pattern).toBe('[A-Z]{3}-\\d{4}');
+  });
+
+  it(`input element with id #date should have a validation pattern`, () => {
+    let input = fixture.debugElement.query(By.css("input#date")).nativeElement;
+    expect(input.pattern).toBe('\\d{2}/\\d{2}/\\d{4}');
+  });
+
+  it(`input element with id #time should have a validation pattern`, () => {
+    let input = fixture.debugElement.query(By.css("input#time")).nativeElement;
+    expect(input.pattern).toBe('\\d{2}:\\d{2}');
+  });
 });

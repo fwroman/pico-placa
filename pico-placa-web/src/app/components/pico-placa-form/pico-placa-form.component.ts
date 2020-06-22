@@ -21,6 +21,9 @@ export class PicoPlacaFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.form.form.controls['plateNum'].setErrors({ 'incorrect': true });
+    }, 500);
   }
 
   /**
