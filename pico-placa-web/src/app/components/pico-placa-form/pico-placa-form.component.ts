@@ -27,6 +27,22 @@ export class PicoPlacaFormComponent implements OnInit {
   }
 
   /**
+   * METHOD TO VALIDATE WHETHER OR NOT THE DATE IS CORRECT
+   * AUTHOR: FREDI ROMAN
+   */
+  public validateDate() {
+    
+  }
+
+  /**
+   * METHOD TO VALIDATE WHETHER OR NOT THE TIME IS CORRECT
+   * AUTHOR: FREDI ROMAN
+   */
+  public validateTime() {
+
+  }
+
+  /**
    * METHOD TO START THE 'PICO Y PLACA' PROCESS
    * AUTHO: FREDI ROMAN
    */

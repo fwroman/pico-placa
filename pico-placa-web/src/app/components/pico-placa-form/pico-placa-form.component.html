@@ -17,7 +17,7 @@
                 <label for="date">Date:</label>
                 <input class="form-control" type="text" id="date" name="date" #date="ngModel"
                     [(ngModel)]="picoPlaca.date" [ngClass]="{ 'is-invalid': date.touched && !date.valid }"
-                    placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required>
+                    (change)="validateDate()" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required>
                 <span class="invalid-feedback">This field is invalid.</span>
             </div>
 
@@ -25,7 +25,7 @@
                 <label for="time">Time:</label>
                 <input class="form-control" type="text" id="time" name="time" #time="ngModel"
                     [(ngModel)]="picoPlaca.time" [ngClass]="{ 'is-invalid': time.touched && !time.valid }"
-                    placeholder="hh:mm" pattern="\d{2}:\d{2}" required>
+                    (change)="validateTime()" placeholder="hh:mm" pattern="\d{2}:\d{2}" required>
                 <span class="invalid-feedback">This field is invalid.</span>
             </div>
         </div>

@@ -141,4 +141,18 @@ describe('PicoPlacaFormComponent', () => {
     let input = fixture.debugElement.query(By.css("input#time")).nativeElement;
     expect(input.pattern).toBe('\\d{2}:\\d{2}');
   });
+
+  it(`should execute 'validateDate()' method on change event of the #date input`, fakeAsync(() => {
+    spyOn(component, 'validateDate');
+    let input = fixture.debugElement.query(By.css("input#date"));
+    input.triggerEventHandler('change', {});
+    expect(component.validateDate).toHaveBeenCalled();
+  }));
+
+  it(`should execute 'validateTime()' method on change event of the #time input`, fakeAsync(() => {
+    spyOn(component, 'validateTime');
+    let input = fixture.debugElement.query(By.css("input#time"));
+    input.triggerEventHandler('change', {});
+    expect(component.validateTime).toHaveBeenCalled();
+  }));
 });
