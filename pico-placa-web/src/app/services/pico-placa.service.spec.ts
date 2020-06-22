@@ -22,7 +22,7 @@ describe('PicoPlacaService', () => {
   it(`should have a method named 'canCarBeDriven' which return true`, () => {
     //let picoPlaca = new PicoPlaca(null, null, null);
     //let picoPlaca = new PicoPlaca('', '', '');
-    let picoPlaca = new PicoPlaca('PTC-0896', '24/06/2020', '19:31');
+    let picoPlaca = new PicoPlaca('PTC-0603', '24/06/2020', '16:31');
     expect(service.canCarBeDriven(picoPlaca)).toBeTrue();
   })
 });

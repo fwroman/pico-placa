@@ -111,7 +111,7 @@ describe('AppComponent', () => {
     expect(responseAlert.nativeElement.tagName.toLowerCase()).toBe('pico-placa-alert');
   });
 
-  it(`responseAlert attribute should have a title different than '', a message body different than '' and an alert type between [1,2,3] `, () => {
+  it(`responseAlert attribute should have a title different than '', a message body different than '' and an alert type between [1,2,3]`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     expect(fixture.componentInstance.respAlertObj.title.length).toBeGreaterThan(0);
     expect(fixture.componentInstance.respAlertObj.message.length).toBeGreaterThan(0);

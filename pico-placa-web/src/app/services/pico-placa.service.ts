@@ -72,14 +72,10 @@ export class PicoPlacaService {
     }
 
     let lastDigit = parseInt(picoPlaca.plateNumber.slice(-1));
-    if (!DAYS_OF_WEEK[day].includes(lastDigit)) {
+    if (DAYS_OF_WEEK[day].includes(lastDigit) && this.isTimeBetweenTwoBaseTimes(picoPlaca.time, SCHEDULE.morning.from, SCHEDULE.morning.to)) {
       return false;
     }
-
-    if (this.isTimeBetweenTwoBaseTimes(picoPlaca.time, SCHEDULE.morning.from, SCHEDULE.morning.to)) {
-      return false;
-    }
-    if (this.isTimeBetweenTwoBaseTimes(picoPlaca.time, SCHEDULE.afternoon.from, SCHEDULE.afternoon.to)) {
+    if (DAYS_OF_WEEK[day].includes(lastDigit) && this.isTimeBetweenTwoBaseTimes(picoPlaca.time, SCHEDULE.afternoon.from, SCHEDULE.afternoon.to)) {
       return false;
     }
 
