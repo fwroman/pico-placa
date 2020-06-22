@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core
 import { PicoPlacaFormComponent } from './pico-placa-form.component';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { PicoPlacaService } from 'src/app/services/pico-placa.service';
 
 describe('PicoPlacaFormComponent', () => {
   let component: PicoPlacaFormComponent;
@@ -10,7 +11,7 @@ describe('PicoPlacaFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PicoPlacaFormComponent], imports: [FormsModule]
+      declarations: [PicoPlacaFormComponent], imports: [FormsModule], providers: [PicoPlacaService]
     })
       .compileComponents();
   }));
@@ -154,5 +155,21 @@ describe('PicoPlacaFormComponent', () => {
     let input = fixture.debugElement.query(By.css("input#time"));
     input.triggerEventHandler('change', {});
     expect(component.validateTime).toHaveBeenCalled();
+  }));
+
+  it('should @Output element have to be defined', () => {
+    expect(fixture.componentInstance.onPicoPlacaProcess).toBeDefined();
+  });
+
+  it(`should 'canCarBeDriven' method have to be triggered called when 'onSubmitProcess' is called`, fakeAsync(() => {
+    spyOn(component._picoPlacaService, 'canCarBeDriven');
+    component.onSubmitProcess();
+    expect(fixture.componentInstance._picoPlacaService.canCarBeDriven).toHaveBeenCalled();
+  }));
+
+  it(`should @Output EventEmitter method have to be triggered when 'onSubmitProcess' is called`, fakeAsync(() => {
+    spyOn(component.onPicoPlacaProcess, 'emit');
+    component.onSubmitProcess();
+    expect(component.onPicoPlacaProcess.emit).toHaveBeenCalled();
   }));
 });
